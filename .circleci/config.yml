@@ -1,20 +1,11 @@
-# CircleCI configuration file
 version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: cimg/ruby:3.0.3-browsers
 
 jobs:
-  bobby:
-    docker:
-      - image: cimg/base:2022.05
+  my-job:
+    executor: my-executor
     steps:
-      - run: echo "Say hello to YAML!"
-  sally:
-    docker:
-      - image: cimg/base:2022.05
-    steps:
-      - run: echo "Say hello to Sally!"
-workflows:
-  version: 2.1
-  bobby_sally:
-    jobs: 
-      - bobby
-      - sally
+      - run: echo "Hello executor!"
